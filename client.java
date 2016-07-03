@@ -30,24 +30,32 @@ public class client {
                 new InputStreamReader(SSocket.getInputStream()));
 	        ) 
 	        {
-	            
-	            String fromServer;
+        	  
+	            String fromServer = in.readLine();
 	            String fromUser;
-
-	            while ((fromServer = in.readLine()) != null) {
+	            System.out.println(fromServer);
+	            while (fromServer != null) {
 	            	System.out.println("Enter a URL to watch: ");
 	                fromUser = input.readLine();
 	                
 	                if (fromUser != null) {
 	                    out.println(fromUser);
+	                    fromServer = in.readLine();
+	                    System.out.println(fromServer);
+	                    
 	                    String usrcmd;
 	                    while ((usrcmd = input.readLine()) != null)
 	                    {
 	                    	if (usrcmd.equals("quit") || usrcmd.equals("stop"))
+	                    	{
 	                    		out.println(usrcmd);
+	                    		break;
+	                    	}
 	                    	System.out.println("[" + usrcmd + "]");
 	                    	
 	                    }
+	                    if(usrcmd.equals("quit"))
+	                    	break;
 	                }
 	            }
 	            
